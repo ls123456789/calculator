@@ -1,4 +1,4 @@
-// CnewcalculatorDlg.cpp : 实现文件
+ // CnewcalculatorDlg.cpp : 实现文件
 //
 
 #include "stdafx.h"
@@ -88,12 +88,20 @@ void CnewcalculatorDlg::OnBnClickedM2c()
 	m_temp1 = 0;
 }
  
-void CnewcalculatorDlg::set(double m_t)
+void CnewcalculatorDlg::set(double m_t1,double m_t2,double m_t3)
 {
-	m_temp1 = m_t;
+	m_temp1 = m_t1;
 	m_str1.Format(L"%lf", m_temp1);
 	m_s1 = m_str1; 
 	rigdel(m_s1);
+	m_temp2 = m_t2;
+	m_str2.Format(L"%lf", m_temp2);
+	m_s2 = m_str2;
+	rigdel(m_s2);
+	m_temp3 = m_t3;
+	m_str3.Format(L"%lf", m_temp3);
+	m_s3 = m_str3;
+	rigdel(m_s3);
 }
 
 void CnewcalculatorDlg::rigdel(CString &m_str1)

@@ -614,7 +614,7 @@ void CcalculatorDlg::OnBnClickedSign()//百分号
 
 
 void CcalculatorDlg::OnBnClickedChangesign()//相反数
-{
+{b 
 	// TODO: 在此添加控件通知处理程序代码
 	double temp2;
 	UpdateData(true);
@@ -644,7 +644,7 @@ void CcalculatorDlg::OnBnClickedM1()
 	CnewcalculatorDlg m_dlg4;
 	if (!mflag == 0 )
 	{
-		m_dlg4.set(m_temp1);
+		m_dlg4.set(m_temp1,m_temp2,m_temp3);
 	}
 	ShowWindow(SW_HIDE); // 隐藏当前窗口
 	m_dlg4.DoModal();
@@ -664,7 +664,6 @@ void CcalculatorDlg::OnBnClickedM1add()
 void CcalculatorDlg::OnBnClickedM1sub()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	mflag = 2;
 	UpdateData(true);
 	m_temp1 = m_temp1 - _ttof(m_str);
 }
@@ -673,7 +672,6 @@ void CcalculatorDlg::OnBnClickedM1sub()
 void CcalculatorDlg::OnBnClickedM1c()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	mflag = 3;
 	m_temp1 = 0;
 }
 
@@ -681,7 +679,6 @@ void CcalculatorDlg::OnBnClickedM1c()
 void CcalculatorDlg::OnBnClickedM1r()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	mflag = 4;
 	m_str.Format(L"%lf", m_temp1);
 	rigdel(m_str);
 	UpdateData(false);
@@ -691,22 +688,20 @@ void CcalculatorDlg::OnBnClickedM1s()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	UpdateData(true);
-	if (!m_temp1==NULL)
+	switch (mflag)
 	{
-		m_temp1 = _ttof(m_str);
-	}
-	else if(!m_temp2 == NULL)
-	{
+	default:MessageBox(L"存储空间不足");
+		break;
+	case 1:mflag = mflag + 1;
 		m_temp2 = _ttof(m_str);
+		break;
+	case 2: m_temp2 = _ttof(m_str);
+		break;
+	case 3: m_temp3 = _ttof(m_str);
+		break;
 	}
-	else if (!m_temp3 == NULL)
-	{
-		m_temp3 = _ttof(m_str);
-	}
-	else
-	{
-		MessageBox(L"存储空间不足");
-	}
+	mflag = mflag + 1;
+	
 }
 
 
