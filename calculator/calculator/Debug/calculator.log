@@ -1,19 +1,21 @@
-﻿生成启动时间为 2016/1/7 17:11:03。
-     1>项目“D:\Users\Lenovo\Desktop\新建文件夹\calculator\calculator\calculator.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2016/1/15 16:20:23。
+     1>项目“D:\Users\Lenovo\Desktop\1234\calculator\calculator\calculator.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\calculator.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt CnewcalculatorDlg.cpp calculatorDlg.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\calculator.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt calculatorDlg.cpp
          calculatorDlg.cpp
-         CnewcalculatorDlg.cpp
-         正在生成代码...
+     1>d:\users\lenovo\desktop\1234\calculator\calculator\calculatordlg.cpp(804): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+     1>d:\users\lenovo\desktop\1234\calculator\calculator\calculatordlg.cpp(815): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+     1>d:\users\lenovo\desktop\1234\calculator\calculator\calculatordlg.cpp(825): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+     1>d:\users\lenovo\desktop\1234\calculator\calculator\calculatordlg.cpp(831): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Users\Lenovo\Desktop\新建文件夹\calculator\Debug\calculator.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"D:\Users\Lenovo\Desktop\新建文件夹\calculator\Debug\calculator.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Users\Lenovo\Desktop\新建文件夹\calculator\Debug\calculator.lib" /MACHINE:X86 Debug\calculator.res
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Users\Lenovo\Desktop\1234\calculator\Debug\calculator.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"D:\Users\Lenovo\Desktop\1234\calculator\Debug\calculator.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Users\Lenovo\Desktop\1234\calculator\Debug\calculator.lib" /MACHINE:X86 Debug\calculator.res
          Debug\calculator.obj
          Debug\calculatorDlg.obj
          Debug\CnewcalculatorDlg.obj
          Debug\stdafx.obj
-         calculator.vcxproj -> D:\Users\Lenovo\Desktop\新建文件夹\calculator\Debug\calculator.exe
-     1>已完成生成项目“D:\Users\Lenovo\Desktop\新建文件夹\calculator\calculator\calculator.vcxproj”(Build 个目标)的操作。
+         calculator.vcxproj -> D:\Users\Lenovo\Desktop\1234\calculator\Debug\calculator.exe
+     1>已完成生成项目“D:\Users\Lenovo\Desktop\1234\calculator\calculator\calculator.vcxproj”(Build 个目标)的操作。
 
 已成功生成。
 
-已用时间 00:00:01.65
+已用时间 00:00:01.37

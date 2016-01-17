@@ -31,6 +31,9 @@ public:
 // 实现
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
@@ -42,6 +45,8 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+	ON_WM_MOUSEMOVE()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -59,7 +64,7 @@ CcalculatorDlg::CcalculatorDlg(CWnd* pParent /*=NULL*/)
 	mflag = 0;
 	m_temp1 = NULL;
 	m_temp2 = NULL;
-	m_temp3 = NULL;   
+	m_temp3 = NULL; 
 }
 
 void CcalculatorDlg::DoDataExchange(CDataExchange* pDX)
@@ -103,6 +108,7 @@ BEGIN_MESSAGE_MAP(CcalculatorDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_M1R, &CcalculatorDlg::OnBnClickedM1r)
 	ON_WM_KEYUP()
 	ON_BN_CLICKED(IDC_M1S, &CcalculatorDlg::OnBnClickedM1s)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -138,6 +144,8 @@ BOOL CcalculatorDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+	SetTimer(1, 1000, NULL);
+	sec = 0;
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -614,7 +622,7 @@ void CcalculatorDlg::OnBnClickedSign()//百分号
 
 
 void CcalculatorDlg::OnBnClickedChangesign()//相反数
-{b 
+{
 	// TODO: 在此添加控件通知处理程序代码
 	double temp2;
 	UpdateData(true);
@@ -695,6 +703,9 @@ void CcalculatorDlg::OnBnClickedM1s()
 	case 1:mflag = mflag + 1;
 		m_temp2 = _ttof(m_str);
 		break;
+	case 0: m_temp1 = _ttof(m_str);
+		mflag = mflag + 1;
+		break;
 	case 2: m_temp2 = _ttof(m_str);
 		break;
 	case 3: m_temp3 = _ttof(m_str);
@@ -739,4 +750,95 @@ void CcalculatorDlg::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	CDialogEx::OnKeyUp(nChar, nRepCnt, nFlags);
 }
 
+//***********************************************
+//*           此段为新创建的成员函数            *
+//***********************************************
 
+
+
+
+
+
+//***********************************************
+//*                     钟表                    *
+//***********************************************
+
+
+
+void CAboutDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	TRACE("x=%d,y=%d\n", point.x, point.y);
+	CDialogEx::OnMouseMove(nFlags, point);
+	
+}
+
+void CAboutDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	CDialogEx::OnTimer(nIDEvent);
+}
+
+
+void CcalculatorDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	CTime time = CTime::GetCurrentTime();
+	hor = time.GetHour();
+	min = time.GetMinute();
+	sec = time.GetSecond();
+	//TRACE("%d,%d,%d\n", hor, min, sec);
+
+	CDC *pDC;
+	pDC = GetDC();
+	pDC->SetWindowOrg(-430, -200);
+	CPen *oldpen;
+	CPen pen1(PS_SOLID, 13, RGB(255, 255, 255));
+
+	oldpen = pDC->SelectObject(&pen1);
+	h = hor*(PI / 6) + min*(PI / 360) + sec*(PI / 216000);
+	CPen pen4(PS_SOLID, 2, RGB(0, 0, 0));
+	oldpen = pDC->SelectObject(&pen4);
+	x = r2*sin(h);
+	y = -r2*cos(h);
+	pDC->MoveTo(0, 0);
+	pDC->LineTo(x, y);
+	CDialogEx::OnTimer(nIDEvent);
+
+
+	oldpen = pDC->SelectObject(&pen1);
+	m = min*(PI / 30) + sec*(PI / 1800);
+	CPen pen3(PS_SOLID, 2, RGB(0, 0, 255));
+	oldpen = pDC->SelectObject(&pen3);
+	x = r1*sin(m);
+	y = -r1*cos(m);
+	pDC->MoveTo(0, 0);
+	pDC->LineTo(x, y);
+	CDialogEx::OnTimer(nIDEvent);
+
+	
+
+	s = sec*(PI / 30) - (PI / 30);
+	oldpen = pDC->SelectObject(&pen1);
+	x = r*sin(s);
+	y = -r*cos(s);
+	pDC->MoveTo(0, 0);
+	pDC->LineTo(x, y);
+	CPen pen2(PS_SOLID, 2, RGB(255, 0, 0));
+	oldpen = pDC->SelectObject(&pen2);
+	x = r*sin(s);
+	y = -r*cos(s);
+	pDC->MoveTo(0, 0);
+	pDC->LineTo(x, y);
+	CDialogEx::OnTimer(nIDEvent);
+
+	/*newpen.CreatePen(PS_SOLID, 1, RGB(255, 255, 255));
+	oldpen = pDC->SelectObject(&newpen);
+	pDC->MoveTo(ox, oy);
+	pDC->LineTo(x, y);
+	pDC->SelectObject(oldpen);
+	x = ox + r1*sin(c*3.1415926 / 180);
+	y = oy + r1*cos(c*3.1415926 / 180);
+	pDC->MoveTo(ox, oy);
+	pDC->LineTo(x, y);
+	c = c - 6;*/
+}

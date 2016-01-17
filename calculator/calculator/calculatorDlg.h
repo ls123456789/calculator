@@ -64,4 +64,12 @@ public:
 	afx_msg void OnBnClickedM1r();
 	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
 	afx_msg void OnBnClickedM1s();
+	//clock
+	double h, m, s;
+	int  hor, min, sec;
+	int r = 50, r1 = 40, r2 = 30;
+	double x, y;
+	double PI = 3.1415926535;
+	
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
